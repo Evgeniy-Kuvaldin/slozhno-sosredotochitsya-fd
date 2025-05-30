@@ -21,6 +21,7 @@ h6,
 p {
   margin: 0;
   font-size: 18px;
+  font-weight: normal;
 }
 
 ul {
@@ -40,4 +41,5 @@ a {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  text-decoration: none;
 }

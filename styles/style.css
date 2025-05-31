@@ -1,8 +1,7 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
-  grid-template-columns: 1fr;
-  width: 100dvw;
+  width: 100%;
   font-family: 'IBM Plex mono', sans-serif;
   font-weight: normal;
   color: var(--main-text-color);
@@ -16,9 +15,11 @@
 .decorated-zone::before {
   content: '' ;
   display: block;
+  grid-column-start: -1;
+  grid-row-start: -6;
   width: 24px;
   height: 24px;
-  justify-self: end;
+  justify-self: self-end;
   align-self: self-start;
   border-top: 1px solid var(--angle-color);
   border-right: 1px solid var(--angle-color);
@@ -27,9 +28,11 @@
 .decorated-zone:after {
   content: '' ;
   display: block;
+  grid-column-start: 1;
+  grid-row-start: -1;
   width: 24px;
   height: 24px;
-  justify-self: start;
+  justify-self: self-start;
   align-self: self-end;
   border-left: 1px solid var(--angle-color);
   border-bottom: 1px solid var(--angle-color);
@@ -46,9 +49,8 @@
 }
 
 .header__theme-menu-list {
-  justify-self: flex-end;
-  display: flex;
-  flex-direction: column;
+  justify-self: self-end;
+  display: grid;
   gap: 10px;
 }
 
@@ -146,7 +148,8 @@
 }
 
 .section-galery {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
   width: 100%;
 }
@@ -165,19 +168,35 @@
 
 .footer {
   display: grid;
-  justify-content: center;
+  grid-template-columns: 1fr;
+  height: 100dvh;
   align-items: center;
-  min-block-size: 100dvh;
-  width: 100dvw;
+  min-inline-size: 100dvw;
   padding: 10px;
 }
 
 .footer__title {
+  justify-self: center;
   text-shadow: 2px 2px 0 var(--accent-color)
 }
 
 @media (width >= 768px) {
+  .header {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 24px repeat(3, 1fr) 24px;
+  }
+
+  .header__theme-menu-list {
+  }
+  
   .title {
+    grid-column: 1 / span 2;
+    grid-row-start: 3;
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .header__subtitle {
+    display: grid;
+    grid-column-start: 2;
   }
 }

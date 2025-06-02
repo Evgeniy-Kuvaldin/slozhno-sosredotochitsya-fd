@@ -19,6 +19,6 @@
   --angle-color: #353430;
 }
 
-.theme-light .page {
-  /* Вам также нужно будет написать ряд подобных селекторов */
+.theme-light .page .header .header__record-marker{
+  display: none;
 }

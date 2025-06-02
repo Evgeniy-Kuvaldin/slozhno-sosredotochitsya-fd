@@ -10,6 +10,7 @@
   background-image: var(--cover-background-img);
   background-position: center bottom;
   background-attachment: fixed;
+  background-size: cover;
 }
 
 .decorated-zone::before {
@@ -40,25 +41,52 @@
   border-bottom: 1px solid var(--angle-color);
 }
 
+.header__record-marker {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  top: 10px;
+  right: 19px;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  font-size: 18px;
+  line-height: 1.39;
+}
+
+.header__record-marker::after {
+  content: '';
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  box-shadow: 0 0 4px 2px var(--accent-color);
+
+}
+
 .header {
   position: relative;
   display: grid;
+  grid-template-rows: 1fr min-content 1fr;
   align-items: center;
   justify-content: start;
-  padding: 10px;
+  padding: 0 10px;
   min-block-size: 100dvh;
   width: 100dvw;
 }
 
 .header__theme-menu-list {
   justify-self: self-end;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
 .header__theme-menu-button {
   color: var(--theme-menu-color);
   background-color: transparent;
+  font-size: 18px;
   line-height: 1;
   text-transform: lowercase;
   border: none;
@@ -109,12 +137,13 @@
 
 .section {
   padding: 40px 10px;
+  display: grid;
+  gap: 20px;
 }
 
 .section__title {
   font-weight: bold;
   color: var(--accent-color);
-  margin-bottom: 20px;
 }
 
 .section__list {
@@ -145,10 +174,6 @@
   outline: 1px solid var(--main-text-color);
 }
 
-.section-how .subtitle {
-  margin-bottom: 20px;
-}
-
 .section-galery {
   display: flex;
   flex-direction: column;
@@ -162,10 +187,11 @@
 }
 
 .section-galery__image {
+  display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-position: center;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .footer {
@@ -188,11 +214,13 @@
   .header {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 24px repeat(3, 1fr) 24px;
+    padding: 0;
   }
 
   .header__theme-menu {
     grid-column-start: 2;
     grid-row-start: 2;
+    margin-right: 20px;
   }
   
   .header__title {
@@ -205,5 +233,105 @@
     grid-column-start: 2;
     grid-row-start: 4;
     justify-self: end;
+    margin-right: 20px;
+  }
+
+  .section {
+    padding: 60px 20px 20px;
+    max-inline-size: 100dvw;
+  }
+
+  .section-why,
+  .section-how {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .section-what .section__title {
+    max-inline-size: 30%;
+  }
+
+  .section-how .section__title {
+    grid-row: 1 / span 2;
+  }
+
+  .section-how .subtitle,
+  .section-how .section__list {
+    grid-column-start: 2;
+  }
+
+  .section-galery {
+    padding-bottom: 60px;
+  }
+
+  .section-galery__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 0.26fr 0.31fr 0.43fr;  /*Пропорция для галереи, т.к. строки не равны */
+    gap: 20px;
+  }
+
+  .section-galery__list-item:has(.image-horizon) {
+    grid-column: 1 / span 2;
+  }
+
+  .section-galery__list-item:has(.image-icecream) {
+    grid-column: 3 / -1;
+    grid-row: 1 / span 2;
+  }
+
+  .section-galery__list-item:has(.image-tape) {
+    grid-column: 1 / 2;
+    grid-row: 2 / span 2;
+  }
+
+  .section-galery__list-item:has(.image-books) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
+  .section-galery__list-item:has(.image-street) {
+    grid-column: 2 / span 2;
+    grid-row: 3 / -1;
+  }
+}
+
+@media (width >= 1024px) {
+  .header__theme-menu {
+    grid-column: 1 / span 2;
+    grid-row-start: 1;
+    justify-self: center;
+    align-self: start;
+    margin-top: 20px;
+    margin-right: 0;
+  }
+
+  .header__theme-menu-list {
+    flex-direction: row;
+  }
+
+  .section-what {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .section-what .section__title {
+    max-inline-size: 100%;
+  }
+
+  .section-what .section__list {
+    grid-row-start: 2;
+    grid-column: 1 / span 3;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .section-what__list-item:has(.multitasking) {
+    grid-column: 1 / span 1;
+  }
+
+  .section-what__list-item:has(.eat) {
+    grid-column: 2 / span 1;
+  }
+
+  .section-what__list-item:has(.devices) {
+    grid-column: 3 / span 1;
   }
 }

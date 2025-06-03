@@ -24,3 +24,22 @@
 .theme-light .page .header .header__record-marker{
   display: none;
 }
+
+@media (prefers-color-scheme: light) {
+  :root.theme-auto {
+    --title-color: #FFC2E6;
+    --accent-color: #FF8DCB;
+    --accent-text-color: #353430;
+    --main-text-color: #353430;
+    --background-color: #FFF1F7;
+    --cover-background-img: url(../images/cover-image-light.png);
+    --theme-menu-color: #353430;
+    --angle-color: #353430;
+    --section-title-color: #353430;
+    --button-hover-color: rgba(50 49 45 / 0.4);
+  }
+
+  .theme-auto .page .header .header__record-marker{
+    display: none;
+  }
+}

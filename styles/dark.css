@@ -21,6 +21,17 @@
   --button-hover-color: rgba(255 0  112 / 0.4);
 }
 
-.theme-dark .page {
-  /* Вам также нужно будет написать ряд подобных селекторов */
+@media (prefers-color-scheme: dark) {
+  :root.theme-auto {
+    --title-color: #DB00FF;
+    --accent-color: #FF0070;
+    --accent-text-color: #000028;
+    --main-text-color: #F1B2CE;
+    --background-color: #000028;
+    --cover-background-img: url(../images/cover-image-dark.png);
+    --theme-menu-color: #FF0070;
+    --angle-color: #FF0070;
+    --section-title-color: #FF0070;
+    --button-hover-color: rgba(255 0  112 / 0.4);
+  }
 }
